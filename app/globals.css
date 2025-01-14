@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-zoom.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-video.css');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  /* Personalizar la barra de desplazamiento en navegadores Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 5px; /* Ancho de la barra */
+  height: 5px; /* Alto de la barra horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #3f0053; /* Color de fondo de la pista */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ae00ff; /* Color del pulgar (la parte que se mueve) */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c341ff; /* Color cuando se pasa el mouse sobre el pulgar */
+}
+
+/* Para Firefox */
+scrollbar {
+  width: 50px;
+  height: 50cap;
+}
+
+scrollbar[track] {
+  background: #b203f7;
+}
+
+scrollbar[thumb] {
+  background-color: #ac0bf7;
+}
+
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border !scroll-smooth;
+    cursor: url('/mira.svg') 20 20, auto;
+  }
+  body {
+    @apply bg-background text-foreground;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+  }
+  button {
+    @apply active:outline-none;
+  }
+}
+
+@layer utilities {
+  .heading {
+    @apply font-bold text-4xl md:text-5xl text-center;
+  }
+
+  .black-gradient {
+    background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
+  }
+}
+
+@media (min-width: 1033px) {
+  .lgxl{
+    height: 760px;
+  }
+}
+
+.lg-react-element {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 5px;
+  
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .lg-react-element {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg-react-element {
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+  }
+}
+
+.lg-react-element a {
+  padding: 4px;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  animation-duration: 200ms;
+}
+
+.lg-react-element img {
+  width: 200px; 
+  height: 200px; 
+  object-fit: cover;
+  border-radius: 5%;
+}
+
+.lg-react-element a:hover {
+  --tw-scale-x: 1.03;
+    --tw-scale-y: 1.03;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
