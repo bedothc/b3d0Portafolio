@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MagicButton } from "./ui/MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 
 const ContactForm: React.FC = () => {
