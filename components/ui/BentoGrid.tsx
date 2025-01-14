@@ -6,8 +6,11 @@ import GridGlobe  from "./GridGlobe";
 import { MagicButton } from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 import Lottie from "react-lottie";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import animationData from "@/data/confetti.json";
+
+
+import Image from 'next/image';
 
 export const BentoGrid = ({
   className,
@@ -41,8 +44,6 @@ export const BentoGridItem = ({
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
   id?: number;
   img?: string;
   imgClassName?: string;
@@ -50,16 +51,20 @@ export const BentoGridItem = ({
   spareImg?: string;
 }) => {
 
-  const leftLists = ["ILUMINACIÓN", "COLOR", "FOTOGRAFIA"];
-  const rightLists = ["SONIDO", "PRODUCCIÓN", "ARTE"];
+  const [copied, setCopied] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  const [copied, setCopied] = useState (false);
+  const leftLists = ["React", "Next.js", "TypeScript"];
+  const rightLists = ["Tailwind CSS", "Lottie", "Vercel"];
 
   const handleCopy = () => {
     navigator.clipboard.writeText('HOLA@DEBUGSTART.COM');
-
     setCopied(true);
-  }
+  };
+
+  useEffect(() => {
+    setIsClient(true); // Solo después de que el componente se monte en el cliente
+  }, []);
 
   return (
     <div
@@ -67,19 +72,18 @@ export const BentoGridItem = ({
         "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
         className
       )}
-      
       style={{
         background: "rgb(4,7,29)",
-        backgroundColor:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+        backgroundColor: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
       }}
-
     >
 
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
             {img && (
-              <img
+              <Image
+                width={1000}
+                height={1000}
                 src={img}
                 alt={img}
                 className={cn(imgClassName, "object-cover object-center ")}
@@ -91,7 +95,9 @@ export const BentoGridItem = ({
               } `}
           >
             {spareImg && (
-              <img
+              <Image
+                width={1000}
+                height={1000}
                 src={spareImg}
                 alt={spareImg}
                 //   width={220}
@@ -100,7 +106,7 @@ export const BentoGridItem = ({
             )}
           </div>
 
-          {id === 6 && (
+          {isClient && id === 6 && (
             <BackgroundGradientAnimation>
               <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
             </BackgroundGradientAnimation>
@@ -125,10 +131,10 @@ export const BentoGridItem = ({
             </div>
 
             {/* for the github 3d globe */}
-            {id === 2 && <GridGlobe />}
+            {isClient && id === 2 && <GridGlobe />}
 
             {/* Tech stack list div */}
-            {id === 3 && (
+            {isClient && id === 3 && (
               <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
                 {/* tech stack lists */}
                 <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
@@ -158,7 +164,8 @@ export const BentoGridItem = ({
               </div>
             )}
 
-          {id === 6 && (
+          {/* Solo muestra Lottie en el cliente */}
+          {isClient && id === 6 && (
             <div className="mt-5 relative">
               {/* button border magic from tailwind css buttons  */}
               {/* add rounded-md h-8 md:h-8, remove rounded-full */}
@@ -178,6 +185,7 @@ export const BentoGridItem = ({
                   }
                 }} height={200} width={400} />
               </div>
+              
 
               <MagicButton
                 title={copied ? "Email is Copied!" : "Copiar email address"}

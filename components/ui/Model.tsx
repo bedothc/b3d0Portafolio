@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useLoader } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 
+import Image from 'next/image';
+
 interface NavItem {
   name: string;
   id: string;
@@ -94,7 +96,7 @@ export default function FloatingNav() {
           <div className="block">
             <button onClick={handleDrawerToggle} className="text-white flex items-center">
               {buttonText}
-              <img src={`/${buttonSvg}`} alt="menu icon" className="w-7 h-7 ml-2" />
+              <Image width={1000} height={1000} src={`/${buttonSvg}`} alt="menu icon" className="w-7 h-7 ml-2" />
             </button>
           </div>
           <div className="hidden space-x-4">

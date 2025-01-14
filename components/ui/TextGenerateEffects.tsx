@@ -37,7 +37,7 @@ export const TextGenerateEffect: React.FC<TextGenerateEffectProps> = ({
         animate(el, { opacity: [1, 0, 1] }, { duration: 2.5, repeat: Infinity });
       }
     });
-  }, [scope.current, flickerRange, animate]);
+  }, [flickerRange, animate, scope]);
 
   const renderWords = () => {
     return (

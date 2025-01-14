@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image';
 
 export const Sobremi = () => {
   return (
@@ -16,7 +17,7 @@ export const Sobremi = () => {
 
         <div className='md:flex w-full md:my-4'>  
             <div className='w-full  '>
-                <img src="/p1.jpg" alt="" className='border border-indigo-800 rounded-3xl' />
+                <Image src="/p1.jpg" alt="" width={1000} height={1000} className='border border-indigo-800 rounded-3xl' />
             </div>
             <p className='relative w-full my-4 md:-left-16 lg:top-11 md:w-96 font-base tracking-widest'>
             
@@ -44,7 +45,7 @@ export const Sobremi = () => {
             </p>
 
             <div className='w-full'>
-                <img src="/p2.jpg" alt="" className='rounded-3xl border border-indigo-800' />
+                <Image src="/p2.jpg" alt="" width={1000} height={1000} className='rounded-3xl border border-indigo-800' />
             </div>
             
         </div>

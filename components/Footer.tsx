@@ -2,12 +2,19 @@ import React from 'react';
 import { FaLinkedinIn, FaInstagram, FaGithub } from 'react-icons/fa';
 import { SiArtstation } from 'react-icons/si';
 
+import Image from 'next/image';
+
 const Footer: React.FC = () => {
   return (
     <footer className=" text-white py-6 mt-32">
 
     <div className=''>
-        <img src="/letras.svg" alt="" />
+        <Image 
+        src="/letras.svg" 
+        alt="" 
+        width={1500}
+        height={1500}
+        />
     </div>
 
       <div className="container mx-auto px-6 text-center md:text-start ">

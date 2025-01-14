@@ -1,6 +1,8 @@
 import React from 'react';
 import LightGallery from 'lightgallery/react';
 
+import Image from 'next/image';
+
 // Import styles
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
@@ -37,7 +39,9 @@ const Gallery3d = () => {
                     
                         {images.map((image, index) => (
                             <a key={index} href={image.src} data-src={image.src}>
-                                <img
+                                <Image
+                                    width={1000}
+                                    height={1000}
                                     alt={image.alt}
                                     src={image.thumb}
                                     
